@@ -1,0 +1,39 @@
+import java.util.*;
+import java.lang.*;
+public final class TestC
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        for(int i=0;i<t;i++)
+        {
+            int n=sc.nextInt();
+            int k=sc.nextInt();
+            char[] c=sc.next().toCharArray();
+            int dist=k,count=0;
+            for(int j=0;j<c.length;j++)
+            {
+                if(c[j]=='0')
+                {
+                    if(dist==k)
+                    {
+                        count++;
+                        dist=0;
+                    }
+                    else
+                    {
+                        dist++;
+                    }
+                }
+                else
+                {
+                    if(dist<k)
+                     count--;
+                    dist=0;
+                }
+            }
+            System.out.println(count);
+        }
+    }
+}
