@@ -1,0 +1,63 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int i=0;i<t;i++)
+		{
+		    int n=sc.nextInt();
+		    int m=sc.nextInt();
+		    HashMap<Integer,Integer> map=new HashMap<Integer,Integer>();
+		    LinkedHashSet<Integer> set=new LinkedHashSet<Integer>();
+		    HashSet<Integer> a=new HashSet<Integer>();
+		    for(int j=0;j<n;j++)
+		    {
+		        int v=sc.nextInt();
+		        map.put(v,map.getOrDefault(v,0)+1);
+		    }
+		    for(int j=0;j<m;j++)
+		    {
+		        int val=sc.nextInt();
+		        set.add(val);
+		    }
+		    int index=0;
+		    for(int j:set)
+		    {
+		        if(map.containsKey(j))
+		        {
+		            int c=map.get(j);
+		            for(int k=0;k<c;k++)
+		            {
+		             System.out.print(j+" ");
+		             index++;
+		            }
+		            map.put(j,0);
+		            a.add(j);
+		        }
+		    }
+		    int[] ans=new int[n-index];
+		    int start=0;
+		    for(int j:map.keySet())
+		    {
+		        if(!a.contains(j))
+		        {
+		            int count=map.get(j);
+		            for(int k=0;k<count;k++)
+		             ans[start++]=j;
+		            map.put(j,0);
+		            a.add(j);
+		        }
+		    }
+		    Arrays.sort(ans);
+		    for(int k=0;k<start;k++)
+		     System.out.print(ans[k]+" ");
+		    System.out.println();
+		}
+	}	
+		
+	
+}
