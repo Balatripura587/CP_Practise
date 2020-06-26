@@ -1,0 +1,54 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int i=0;i<t;i++)
+		{
+		    int n=sc.nextInt();
+		    Set<Integer> set=new HashSet<Integer>();
+		    HashMap<Integer,Integer> m=new HashMap<Integer,Integer>();
+		    for(int j=0;j<n;j++)
+		    {
+		        int v=sc.nextInt();
+		        set.add(v);
+		        m.put(v,m.getOrDefault(v,0)+1);
+		    }
+		    int k=sc.nextInt();
+		    Set<Integer> ans=new HashSet<Integer>();
+		    int count=0;
+		    for(int j:set)
+		    {
+		        if(set.contains(Math.abs(k-j)))
+		        {
+		            int val=Math.abs(k-j);
+		            if(val==j) 
+		            {
+		                if(m.get(j)>1 && !(ans.contains(j)))
+		                {
+		                count++;
+		                ans.add(j);
+		                //m.put(j,m.get(j)-2);
+		                }
+		            }
+		            else
+		            {
+		                if(!ans.contains(j))
+		                {
+		                    count++;
+		                    ans.add(j);
+		                    ans.add(val);
+		                }
+		            }
+		        }
+		    }
+		    System.out.println(count);
+		}
+	}
+}
